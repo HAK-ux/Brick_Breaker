@@ -1,14 +1,16 @@
 import pygame
 
 
-# Class which initializes the window
+# Class representing the window.
 class Window:
 
-    def __init__(self):
-        # Class Attributes
+    def __init__(self, surface):
+        # Attributes
+        self.surface = surface
         self.background = pygame.Color('black')
         self.FPS = 60
         self.game_Clock = pygame.time.Clock()
+        self.exit = False
         self.running = True
         self.width = 500
         self.height = 400
@@ -23,11 +25,14 @@ class Window:
                     self.running = False
 
 
-# Testing the class
+# Running the class
 if __name__ == '__main__':
     pygame.init()
+
     # create window
-    window = Window()
+    w_surface = pygame.display.get_surface()
+    window = Window(w_surface)
     window.create_window()
-    # quit pygame and clean up the pygame window
+
+    # quit pygame
     pygame.quit()
